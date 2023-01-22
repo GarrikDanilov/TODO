@@ -3,7 +3,7 @@ from authapp.models import User
 
 
 class Project(models.Model):
-    title = models.CharField(max_length=256, verbose_name='Название')
+    title = models.CharField(max_length=256, unique=True, verbose_name='Название')
     repo = models.URLField(blank=True, null=True, verbose_name='Ссылка на репозиторий')
     users = models.ManyToManyField(User)
 
