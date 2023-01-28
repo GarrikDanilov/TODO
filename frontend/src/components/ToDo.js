@@ -20,7 +20,7 @@ const ToDoItem = ({item}) => {
 
 const ToDoList = ({items}) => {
     return (
-        <table class='table table-bordered table-hover'>
+        <table className='table table-bordered table-hover'>
             <thead>
                 <tr>
                     <th>Проект</th>

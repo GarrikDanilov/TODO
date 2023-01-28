@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 const ProjectItem = ({project}) => {
     return (
         <tr>
             <td>
-                <a href={`/project/${project.title}`}>{project.title}</a>
+                <Link to={`/project/${project.title}`}>{project.title}</Link>
             </td>
             <td>
                 {project.users.join(', ')}
@@ -26,7 +27,7 @@ const ProjectItem = ({project}) => {
 
 const ProjectList = ({projects}) => {
     return (
-        <table class='table table-bordered table-hover'>
+        <table className='table table-bordered table-hover'>
             <thead>
                 <tr>
                     <th>Проект</th>
