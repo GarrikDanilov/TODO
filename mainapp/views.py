@@ -20,7 +20,7 @@ class ProjectViewSet(ModelViewSet):
     filterset_class = ProjectFilter
 
 
-class ToDoViewset(ModelViewSet):
+class ToDoViewSet(ModelViewSet):
     queryset = ToDo.objects.all()
     serializer_class = ToDoModelSerializer
     pagination_class = ToDoPagination

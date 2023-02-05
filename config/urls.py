@@ -20,13 +20,13 @@ from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
 from authapp.views import UserModelViewSet
-from mainapp.views import ProjectViewSet, ToDoViewset
+from mainapp.views import ProjectViewSet, ToDoViewSet
 
 
 router = DefaultRouter()
 router.register('users', UserModelViewSet)
 router.register('projects', ProjectViewSet)
-router.register('todo', ToDoViewset)
+router.register('todo', ToDoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
