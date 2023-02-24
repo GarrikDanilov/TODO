@@ -3,9 +3,9 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='mt-4'>
+        <footer className='mt-auto'>
             <p className='bg-info bg-gradient'>&copy; 2023</p>
-        </div>
+        </footer>
     )
 }
 

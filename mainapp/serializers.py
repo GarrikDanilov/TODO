@@ -1,10 +1,10 @@
-from rest_framework.serializers import HyperlinkedModelSerializer, StringRelatedField
+from rest_framework.serializers import HyperlinkedModelSerializer, SlugRelatedField
 from mainapp.models import Project, ToDo
-from authapp.serializers import UserModelSerializer
+from authapp.models import User
 
 
 class ProjectModelSerializer(HyperlinkedModelSerializer):
-    users = StringRelatedField(many=True)
+    users = SlugRelatedField(many=True, slug_field='username', queryset=User.objects.all())
 
     class Meta:
         model = Project
@@ -12,8 +12,9 @@ class ProjectModelSerializer(HyperlinkedModelSerializer):
 
 
 class ToDoModelSerializer(HyperlinkedModelSerializer):
-    user = UserModelSerializer()
-    project = StringRelatedField()
+
+    project = SlugRelatedField(slug_field='title', queryset=Project.objects.all())
+    user = SlugRelatedField(slug_field='username', queryset=User.objects.all())
 
     class Meta:
         model = ToDo
