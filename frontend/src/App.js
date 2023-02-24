@@ -11,7 +11,6 @@ import Footer from './components/Footer'
 import Menu from './components/Menu'
 import LoginForm from './components/Auth'
 import ToDoForm from './components/ToDoForm'
-import ProjectForm from './components/ProjectForm'
 
 
 const NotFound404 = () => {
@@ -143,15 +142,14 @@ class App extends React.Component {
           <Menu user_status={this.is_authenticated()} username={this.state.current_user} logout={() => this.logout()} />
           <Routes>
             <Route path='/' element={<UserList users = {this.state.users} />} />
-            <Route path='/projects' element={<ProjectList projects = {this.state.projects} deleteProject = {(url) => this.deleteProject(url)} />} />
+            <Route path='/projects' element={<ProjectList projects = {this.state.projects} users={this.state.users} 
+            createProject = {(title, repo, users) => this.createProject(title, repo, users)} deleteProject = {(url) => this.deleteProject(url)} />} />
             <Route path='/todo' element={<ToDoList items = {this.state.todo} deleteToDo = {(url) => this.deleteToDo(url)} />} />
             <Route path='/users' element={<Navigate replace to='/' />} />
             <Route path='/login' element={<LoginForm get_token={(login, password) => this.get_token(login, password)} />} />
             <Route path='/project/:title' element={<ProjectDetail projects = {this.state.projects} />} />
             <Route path='/todo/create' element={<ToDoForm projects={this.state.projects} users={this.state.users}
             createToDo = {(project, user, body) => this.createToDo(project, user, body)} />} />
-            <Route path='/projects/create' element={<ProjectForm users={this.state.users} 
-            createProject = {(title, repo, users) => this.createProject(title, repo, users)} />} />
             <Route path='*' element={<NotFound404 />} /> 
           </Routes>
           <Footer />

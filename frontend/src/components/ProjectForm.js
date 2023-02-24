@@ -82,8 +82,9 @@ class ProjectForm extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="text-start">
-                    <button type="submit" className="btn btn-success" id="submitButton" disabled>Создать</button>
+                <div className="d-flex justify-content-between">
+                    <button type='submit' className='btn btn-success' data-bs-dismiss='modal' id='submitButton' disabled>Создать</button>
+                    <button type='button' className='btn btn-danger' data-bs-dismiss='modal'>Отмена</button>
                 </div>
             </form>
         )

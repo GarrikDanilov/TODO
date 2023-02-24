@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ProjectForm from './ProjectForm'
 
 
 const ProjectItem = ({project, deleteProject}) => {
@@ -30,9 +31,9 @@ const ProjectItem = ({project, deleteProject}) => {
 }
 
 
-const ProjectList = ({projects, deleteProject}) => {
+const ProjectList = ({projects, users, createProject, deleteProject}) => {
     return (
-        <div>
+        <div className='px-3 mb-3'>
             <table className='table table-bordered table-hover'>
                 <thead>
                     <tr>
@@ -48,9 +49,27 @@ const ProjectList = ({projects, deleteProject}) => {
                     {projects.map((project) => <ProjectItem project = {project} deleteProject = {deleteProject} />)}
                 </tbody>
             </table>
+
             <div className='text-start'>
-                <Link to='/projects/create' className='btn btn-success'>Добавить</Link>
+                <button type='button' className='btn btn-primary' data-bs-toggle='modal' data-bs-target='#createProject'>Добавить</button>
             </div>
+
+            <div className='modal fade' id='createProject' tabIndex='-1' aria-labelledby='createProjectLabel' aria-hidden='true'>
+                <div className='modal-dialog'>
+                    <div className='modal-content'>
+                        <div className='modal-header'>
+                            <h5 className='modal-title' id='createProjectLabel'>Новый проект</h5>
+                            <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </div>
+                        <div className='modal-body'>
+                            <ProjectForm users={users} createProject={createProject} />
+                        </div>
+                        <div className='modal-footer'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     )
 }
