@@ -54,7 +54,7 @@ class App extends React.Component {
   }
 
   get_token(login, password) {
-    axios.post('http://127.0.0.1:8000/api-token-auth/', {username: login, password: password})
+    axios.post('http://194.58.100.187:8000/api-token-auth/', {username: login, password: password})
     .then(response => {
       this.set_token(response.data['token'], login)
     }).catch(error => alert("Неверный логин или пароль!"))
@@ -77,9 +77,9 @@ class App extends React.Component {
   load_data() {
     const headers = this.get_headers()
     axios.all([
-      axios.get('http://127.0.0.1:8000/api/users/', {headers}),
-      axios.get('http://127.0.0.1:8000/api/projects/', {headers}),
-      axios.get('http://127.0.0.1:8000/api/todo/', {headers})
+      axios.get('http://194.58.100.187:8000/api/users/', {headers}),
+      axios.get('http://194.58.100.187:8000/api/projects/', {headers}),
+      axios.get('http://194.58.100.187:8000/api/todo/', {headers})
     ])
     .then(response => {
       const users = response[0].data.results
@@ -115,7 +115,7 @@ class App extends React.Component {
   createToDo(project, user, body) {
     const headers = this.get_headers()
     const data = {project: project, user: user, body: body}
-    axios.post('http://127.0.0.1:8000/api/todo/', data, {headers}).then(response => {
+    axios.post('http://194.58.100.187:8000/api/todo/', data, {headers}).then(response => {
       let new_todo = response.data
       this.setState({'todo': [...this.state.todo, new_todo]})
     }).catch(error => console.log(error))
@@ -124,7 +124,7 @@ class App extends React.Component {
   createProject(title, repo, users) {
     const headers = this.get_headers()
     const data = {users: users, title: title, repo:repo}
-    axios.post('http://127.0.0.1:8000/api/projects/', data, {headers}).then(response => {
+    axios.post('http://194.58.100.187:8000/api/projects/', data, {headers}).then(response => {
       let new_project = response.data
       this.setState({'projects': [...this.state.projects, new_project]})
     }).catch(error => console.log(error))
